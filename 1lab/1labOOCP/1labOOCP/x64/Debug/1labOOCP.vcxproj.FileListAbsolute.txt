@@ -1,0 +1,3 @@
+C:\Projects\oocp\1lab\1labOOCP\1labOOCP\x64\Debug\1labOOCP.vcxproj.AssemblyReference.cache
+C:\Projects\oocp\1lab\1labOOCP\1labOOCP\x64\Debug\My1labOOCP.MyForm.resources
+C:\Projects\oocp\1lab\1labOOCP\1labOOCP\x64\Debug\1labOOCP.vcxproj.GenerateResource.cache
