@@ -107,11 +107,6 @@ export const FactoryComponent = () => {
     const handleDecryption = () => {
         return null;
     }
-
-
-
-    
- 
  
     return (
         <div>

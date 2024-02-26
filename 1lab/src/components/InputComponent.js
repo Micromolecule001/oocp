@@ -14,7 +14,7 @@ export const InputsComponent = () => {
 
     return (
         <div>
-            <button className='switch' onClick={handleToggle} checked={isUkrToEng}> Click to change  </button>
+            <button className='switch' onClick={handleToggle}> Click to rotate language </button>
 
             <div className="inputWrapper">
                 <form>
