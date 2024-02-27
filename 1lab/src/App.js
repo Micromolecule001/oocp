@@ -3,8 +3,6 @@ import './App.css';
 
 // importing components 
 import { InputsComponent } from "./components/InputComponent";
-import { FactoryComponent } from "./components/FactoryComponent";
-
 
 function App() {
   return (
@@ -12,8 +10,6 @@ function App() {
       <div className="container">
 
         <InputsComponent />
-
-        <FactoryComponent />
 
       </div>
     </div>
