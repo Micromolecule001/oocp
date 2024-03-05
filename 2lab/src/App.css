@@ -1,0 +1,13 @@
+* {
+  font-family: Segoe UI;
+  font-weight: 600;
+}
+
+.body {
+  display: flex;
+  aligh-items: center;
+  aligh-content: center;
+  flex-direction: column;
+
+  margin: 0;
+}
