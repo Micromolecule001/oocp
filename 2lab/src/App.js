@@ -1,7 +1,8 @@
 import React from "react";
 import './App.css';
 
-import { InputsComponent } from "./components/inputComponent.js";
+// importing components 
+import { InputsComponent } from "./components/InputComponent.js";
 
 function App() {
   return (

@@ -6,23 +6,25 @@ export const InputsComponent = () => {
     const [sortedResult, setSortedResult] = useState('');
 
     const handleInputChange = (value) => {
-        setInputData(value);
-    }   
+        console.log('value: ', value)
+        setInputData(inputData + value);
+        console.log('setValue: ', value)
+    } 
 
     const getData = () => {
         console.log('get data: ', inputData)
         if( inputData[0] === '[' && inputData[inputData.length - 1] === ']' ) {
             const unsortedData = new AutoSort('Array', inputData);
             console.log('array: ', unsortedData);
-            setSortedResult(unsortedData.sort()) 
+            setSortedResult(unsortedData.sort());
         } else if( typeof(inputData) === "string" ) {
             const unsortedData = new AutoSort('string', inputData);
             console.log('string: ', unsortedData);
-            setSortedResult(unsortedData.sort()) 
+            setSortedResult(unsortedData.sort());
         } else if( typeof(inputData) === "number" ) {
             const unsortedData = new AutoSort('number', inputData);
             console.log('number: ', unsortedData);
-            setSortedResult(unsortedData.sort()) 
+            setSortedResult(unsortedData.sort());
         }
     }
 
@@ -44,7 +46,7 @@ export const InputsComponent = () => {
                     <textarea
                         type="text"
                         id="to"
-                        placeholder={"Output"}
+                        placeholder={inputData.toString()}
                         value={sortedResult}
                         readOnly
                     ></textarea>
