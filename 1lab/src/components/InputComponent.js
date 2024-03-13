@@ -8,24 +8,25 @@ export const InputsComponent = () => {
 
     let encryption = encryptedText;
 
-    // new Factory, returning object of factory 1
     const handleEncryption = () => {
         const factory = new EncryptionFactory();
-        console.log("eninputValue: ", inputValue.target.value); 
         const factoryItem = factory.create(inputValue.target.value, "Encryption", isUkrToEng);
+
+        console.log("eninputValue: ", inputValue.target.value); 
 
         setEncryptedText(factoryItem.encryption());
     };
 
     const handleDecryption = () => {
         const factory = new EncryptionFactory();
-        console.log("deinputValue: ", inputValue.target.value); 
         const factoryItem = factory.create(inputValue.target.value, "Decryption", isUkrToEng);
         
+        console.log("deinputValue: ", inputValue.target.value); 
+
         setEncryptedText(factoryItem.decryption());
     }
 
-    const handleToggle = () => {
+    const changeLanguage = () => {
         setIsUkrToEng(!isUkrToEng);
     };
 
@@ -35,7 +36,7 @@ export const InputsComponent = () => {
 
     return (
         <div>
-            <button className='switch' onClick={handleToggle}> Click to rotate language </button>
+            <button className='switch' onClick={changeLanguage}> Click to rotate language </button>
 
             <div className="inputWrapper">
                 <form>

@@ -17,15 +17,15 @@ export class EngEncryption extends React.Component {
     }
 
     encryption() {
-    let encryptedString = "";
-   
-    for (let i = 0; i < this.string.length; i++) {
-        encryptedString += this.ukrainianAlphabet[this.englishAlphabet.indexOf(this.string[i]) + 1]
-    }
+        let encryptedString = "";
+    
+        for (let i = 0; i < this.string.length; i++) {
+            console.log('EngEn', encryptedString, this.ukrainianAlphabet[this.englishAlphabet.indexOf(this.string[i]) + 1])
+            encryptedString += this.ukrainianAlphabet[this.englishAlphabet.indexOf(this.string[i]) + 1]
+        }
 
-    return encryptedString;
+        return encryptedString;
     }   
-
 
     decryption() {
         let decryptedString = "";

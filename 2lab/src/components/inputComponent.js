@@ -5,26 +5,36 @@ export const InputsComponent = () => {
     const [inputData, setInputData] = useState('');
     const [sortedResult, setSortedResult] = useState('');
 
-    const handleInputChange = (value) => {
-        console.log('value: ', value)
-        setInputData(inputData + value);
-        console.log('setValue: ', value)
+    const handleInputChange = (event) => {
+        setInputData(event.target.value);
     } 
 
-    const getData = () => {
-        console.log('get data: ', inputData)
-        if( inputData[0] === '[' && inputData[inputData.length - 1] === ']' ) {
-            const unsortedData = new AutoSort('Array', inputData);
+    const getData = (event) => {
+        console.log('get data: ', inputData, 'event.triger.id: ', event.target.id)
+
+        let buttonId = event.target.id;
+
+        if( buttonId === 'array' ) {
+            const unsortedData = new AutoSort('array', inputData);
+
             console.log('array: ', unsortedData);
-            setSortedResult(unsortedData.sort());
-        } else if( typeof(inputData) === "string" ) {
+
+            setSortedResult(unsortedData.sortStrategy());
+        } else if( buttonId === 'string'  ) {
             const unsortedData = new AutoSort('string', inputData);
+
             console.log('string: ', unsortedData);
-            setSortedResult(unsortedData.sort());
-        } else if( typeof(inputData) === "number" ) {
+
+            setSortedResult(unsortedData.sortStrategy());
+        } else if( buttonId === 'number'  ) {
             const unsortedData = new AutoSort('number', inputData);
+
             console.log('number: ', unsortedData);
-            setSortedResult(unsortedData.sort());
+
+            setSortedResult(unsortedData.sortStrategy());
+        } else {
+            console.log( 'else...');
+            return typeof(inputData);
         }
     }
 
@@ -46,15 +56,21 @@ export const InputsComponent = () => {
                     <textarea
                         type="text"
                         id="to"
-                        placeholder={inputData.toString()}
+                        placeholder={'There will be output sorted data'}
                         value={sortedResult}
                         readOnly
                     ></textarea>
                 </form>
             </div>
 
+            <h2> Choose your data type </h2>
+
             <div className='buttonWrapper'>
-                <button onClick={getData}> Sort </button>
+                <button id='array' onClick={getData}> Array </button>
+            
+                <button id='string' onClick={getData}> String </button>
+            
+                <button id='number' onClick={getData}> Number </button>
             </div>
         </div>
     );
