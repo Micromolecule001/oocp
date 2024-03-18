@@ -8,9 +8,9 @@ class Folder extends React.Component {
       this.files = [];
     }
     
-    add(name, size, path, author) {
-      this.files[this.files.length] = new File(name, size, path, author)
-      console.log('file added: ', this.files[this.files.length - 1])
+    add(name, size, path, type, author) {
+      this.files[this.files.length] = new File(name, size, path, type, author);
+      console.log('file added: ', this.files[this.files.length - 1]);
     }
     
     delete() {
@@ -18,6 +18,12 @@ class Folder extends React.Component {
     }
     
     folderData() {
+      console.log('entered folderData: ', {
+        id: this.id,
+        name: this.name,
+        files: this.files
+      })
+
       return {
         id: this.id,
         name: this.name,

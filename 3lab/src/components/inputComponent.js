@@ -1,4 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Folder from './folderClass.js';
+
+// importing hooks
+import { useState } from 'react';
+import { useFolderState } from './folderState.js';
+import { useFoldersList } from './foldersList.js';
 
 export const InputsComponent = () => {
     const [fileName, setFileName] = useState('');
@@ -6,15 +12,21 @@ export const InputsComponent = () => {
     const [filePath, setFilePath] = useState('');
     const [fileType, setFileType] = useState('');
     const [fileSize, setFileSize] = useState(0);
+    const { activeFolder } = useFolderState();
 
-    const saveFile = (event) => {
-        event.preventDefault();
+    const pushFile = (e) => {
+        e.preventDefault(); 
+        setFileSize(fileName.length + fileAuthor.length + activeFolder + fileType);
+        
+        console.log('New File: ', fileName, fileAuthor, activeFolder, fileType );
+
+
     }
 
     return (
         <div className='main'>
             <div className="wrapper">
-                <form onSubmit={saveFile}>
+                <form onSubmit={pushFile}>
                     <input 
                         id='fileName'
                         type='text' 

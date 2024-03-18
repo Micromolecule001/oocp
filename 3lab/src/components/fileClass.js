@@ -1,9 +1,12 @@
-class File extends Component {
-    constructor(name, size, path, author) {
+import React from 'react';
+
+class File extends React.Component {
+    constructor(name, size, path, type, author) {
       super();
       this.name = name;
       this.size = size;
       this.path = path;
+      this.type = type;
       this.author = author;
     }
    
