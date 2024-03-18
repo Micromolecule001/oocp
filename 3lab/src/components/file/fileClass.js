@@ -30,3 +30,5 @@ class File extends React.Component {
         return this.author;
     }
   } 
+
+  export default File;

@@ -1,26 +1,27 @@
 import React from 'react';
-import Folder from './folderClass.js';
 
 // importing hooks
 import { useState } from 'react';
-import { useFolderState } from './folderState.js';
-import { useFoldersList } from './foldersList.js';
+import { useFolderState } from './folder/folderState.js';
+import { useFoldersList } from './folder/foldersList.js';
+import { useFileSize } from './file/fileSize.js';
 
 export const InputsComponent = () => {
     const [fileName, setFileName] = useState('');
     const [fileAuthor, setFileAuthor] = useState('');
     const [filePath, setFilePath] = useState('');
     const [fileType, setFileType] = useState('');
-    const [fileSize, setFileSize] = useState(0);
+    
+    const { fileSize } = useFileSize();
     const { activeFolder } = useFolderState();
+    const { folderList } = useFoldersList();
 
     const pushFile = (e) => {
         e.preventDefault(); 
-        setFileSize(fileName.length + fileAuthor.length + activeFolder + fileType);
         
-        console.log('New File: ', fileName, fileAuthor, activeFolder, fileType );
+        console.log('ACTIVE FOLDER: ', activeFolder);
 
-
+        console.log(folderList);
     }
 
     return (

@@ -10,7 +10,7 @@ class Folder extends React.Component {
     
     add(name, size, path, type, author) {
       this.files[this.files.length] = new File(name, size, path, type, author);
-      console.log('file added: ', this.files[this.files.length - 1]);
+      console.log('file added: ', this.files[(this.files.length - 1)]);
     }
     
     delete() {
@@ -33,3 +33,4 @@ class Folder extends React.Component {
   }
 
   export default Folder;
+  

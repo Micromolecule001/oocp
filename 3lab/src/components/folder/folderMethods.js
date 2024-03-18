@@ -3,20 +3,25 @@ import Folder from './folderClass';
 
 // importing hooks
 import { useState } from 'react';
+import { useFileSize } from '../file/fileSize.js';
 import { useFolderState } from './folderState';
-import { useFoldersList } from './foldersList.js';
+import { useFoldersList } from './foldersList';
 
 export const FolderMethods = () => {
     const [folderName, setFolderName] = useState('');
     const { activeFolder, setActiveFolder } = useFolderState();
     const { folders, setFolders } = useFoldersList();
-    
+    const { setFileSize } = useFileSize();
+
     const createFolder = (e) => {
         e.preventDefault();
 
-        const newFolder = new Folder({ name: folderName, id: folders.length });
+        const newFolder = new Folder({ 
+            id: folders.length,
+            name: folderName 
+        });
 
-        console.log('New Folder Data: ', newFolder.folderData);
+        console.log('New Folder Data: ', newFolder.folderData());
 
         setFolders([...folders, newFolder.folderData()]); 
         setFolderName('');
@@ -24,25 +29,42 @@ export const FolderMethods = () => {
     
     const handleName = (e) => {
         setFolderName(e.target.value);
+        setFileSize(fileName.length + fileAuthor.length + activeFolder + fileType);
     }
 
     const chooseFolder = (e) => {
-        setActiveFolder(e.target.id);
+        console.log('Choose Folder: ', e.target.id)
+        if( activeFolder !== e.target.id && e.target.id) {
+            setActiveFolder(e.target.id);
+        } else {
+            console.log('Already on this folder');
+        }
+
+        console.log('--- Choosen done ---')
     }
 
     const isEmpty = () => {
-    if (folders.length === 0 && activeFolder === -1 || !folders[activeFolder]?.folderData) {
-        return <h2 className='isEmpty'> Empty </h2>;
-    } else {
-        return (
-            <div className='wrapper'>
-                {folders[activeFolder].folderData().files.map((element, index) => (
-                    <h5 key={index}> {element} </h5>
-                ))}
-            </div>
-        );
-    }};
+        if (folders.length === 0 && activeFolder === -1 || !folders[activeFolder]?.folderData) {
+            
+            console.log('folders:', folders);
+            console.log('activeFolder:', activeFolder);
+            console.log('folderData:', folders[activeFolder]?.folderData);
 
+            return <h2 className='isEmpty'> Empty </h2>;
+        } else {
+            let folder = folders[activeFolder];
+            let files = folder.folderData().files;
+    
+            return (
+                <div className='wrapper'>
+                    {files.map((element, index) => (
+                        <h5 key={index}> {element} </h5>
+                    ))}
+                </div>
+            );
+        }
+    };
+    
 
     return (
         <div className='main'>
