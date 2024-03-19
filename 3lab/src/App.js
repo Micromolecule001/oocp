@@ -3,23 +3,20 @@ import './App.css';
 
 // importing components 
 import { InputsComponent } from "./components/inputComponent.js";
-import { SearchComponent } from "./components/searchComponent.js";
-import { FolderMethods } from "./components/folderMethods.js";
+import { FoldersComponent } from "./components/foldersСomponent.js";
+import { useFolderState } from "./components/folder/folderState.js"
 
 function App() {
+  const folderState = useFolderState();
+
   return (
     <div className='body'>
       <div className="container">
-
-        <InputsComponent />
-
+        <InputsComponent folderState={folderState} />
         <br></br>
-
-        <FolderMethods />
-
+        <FoldersComponent folderState={folderState} />
         <br></br>
-
-        <SearchComponent />
+        
       </div>
     </div>
   )

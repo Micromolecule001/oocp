@@ -1,17 +1,16 @@
 import React from 'react';
-import Folder from './folderClass';
+import Folder from './folder/folderClass.js';
 
 // importing hooks
 import { useState } from 'react';
-import { useFileSize } from '../file/fileSize.js';
-import { useFolderState } from './folderState';
-import { useFoldersList } from './foldersList';
+import { useFileProps } from './file/fileProps.js';
+import { useFoldersList } from './folder/foldersList.js';
 
-export const FolderMethods = () => {
+export const FoldersComponent = ({ folderState }) => {
     const [folderName, setFolderName] = useState('');
-    const { activeFolder, setActiveFolder } = useFolderState();
+    const { activeFolder, setActiveFolder } = folderState;
     const { folders, setFolders } = useFoldersList();
-    const { setFileSize } = useFileSize();
+    const { fileName, fileAuthor, fileType, setFileSize } = useFileProps();
 
     const createFolder = (e) => {
         e.preventDefault();
@@ -40,41 +39,15 @@ export const FolderMethods = () => {
             console.log('Already on this folder');
         }
 
-        console.log('--- Choosen done ---')
+        console.log('--- Choosen done ---');
     }
-
-    const isEmpty = () => {
-        if (folders.length === 0 && activeFolder === -1 || !folders[activeFolder]?.folderData) {
-            
-            console.log('folders:', folders);
-            console.log('activeFolder:', activeFolder);
-            console.log('folderData:', folders[activeFolder]?.folderData);
-
-            return <h2 className='isEmpty'> Empty </h2>;
-        } else {
-            let folder = folders[activeFolder];
-            let files = folder.folderData().files;
     
-            return (
-                <div className='wrapper'>
-                    {files.map((element, index) => (
-                        <h5 key={index}> {element} </h5>
-                    ))}
-                </div>
-            );
-        }
-    };
-    
-
     return (
         <div className='main'>
             <div className='wrapper'>
                 <h2 className='title'> Choose Folder </h2>
 
                 <div className='folders'>
-
-                    {isEmpty()}
-                    
                     { folders.map((element, index) => (
                         <div 
                             className='folder' 

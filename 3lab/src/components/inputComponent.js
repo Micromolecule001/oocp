@@ -1,18 +1,19 @@
 import React from 'react';
 
 // importing hooks
-import { useState } from 'react';
 import { useFolderState } from './folder/folderState.js';
 import { useFoldersList } from './folder/foldersList.js';
-import { useFileSize } from './file/fileSize.js';
+import { useFileProps } from './file/fileProps.js';
 
-export const InputsComponent = () => {
-    const [fileName, setFileName] = useState('');
-    const [fileAuthor, setFileAuthor] = useState('');
-    const [filePath, setFilePath] = useState('');
-    const [fileType, setFileType] = useState('');
+export const InputsComponent = ({ folderState }) => {
+    const { 
+        fileSize, 
+        fileName, setFileName,
+        fileAuthor, setFileAuthor,
+        fileType, setFileType,
+        filePath, setFilePath,
+    } = useFileProps();
     
-    const { fileSize } = useFileSize();
     const { activeFolder } = useFolderState();
     const { folderList } = useFoldersList();
 
@@ -20,7 +21,6 @@ export const InputsComponent = () => {
         e.preventDefault(); 
         
         console.log('ACTIVE FOLDER: ', activeFolder);
-
         console.log(folderList);
     }
 
@@ -33,7 +33,7 @@ export const InputsComponent = () => {
                         type='text' 
                         placeholder='Name'
                         value={fileName}
-                        onChange={(event) => setFileName(event.target.value)}
+                        onChange={(event) => { event.preventDefault(); setFileName(event.target.value) }}
                     />
 
                     <input 
@@ -41,7 +41,7 @@ export const InputsComponent = () => {
                         type='text'
                         placeholder='Author'
                         value={fileAuthor}
-                        onChange={(event) => setFileAuthor(event.target.value)}
+                        onChange={(event) => { event.preventDefault(); setFileAuthor(event.target.value) }}
                     />
 
                     <div className='inputWrapper'>
@@ -51,13 +51,13 @@ export const InputsComponent = () => {
                             type='text'
                             placeholder='C://dir/dir2/file'
                             value={filePath}
-                            onChange={(event) => setFilePath(event.target.value)}
+                            onChange={(event) => { event.preventDefault(); setFilePath(event.target.value) }}
                         />
 
                         <select 
                             placeholder='.type'
                             value={fileType}
-                            onChange={(event) => setFileType(event.target.value)}
+                            onChange={(event) => { event.preventDefault(); setFileType(event.target.value) }}
                         >
                             <option value='1'> .exe </option>
                             <option value='2'> .docx </option>
