@@ -1,0 +1,119 @@
+
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
+body {
+  background-image: url('C:/Users/dimab/Pictures/windows_95_wallpaper_clouds_remastered_by_zadarkside0_ddsmcyj-pre.jpg');
+  background-repeat: inherit;
+  background-size: 100% 100%;
+}
+
+.app-body {
+  padding: 100px 0px;
+
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-wrapper {
+  @extend .app-body;
+  
+  flex-direction: row;
+
+  height: fit-content;
+}
+
+.main {
+  padding: 20px 10px;
+  
+  .container {
+    @extend .main;
+    
+    padding: 30px;
+    
+    flex-direction: column;
+  
+    border: 12px solid rgb(6, 135, 139);
+    background-color: rgb(18, 181, 187);
+    width: fit-content;
+
+    h2 {
+      padding: 24px;
+      color: black;
+    }
+
+    input {
+      padding: 9px;
+
+      width: 100%;
+      border: none;
+      box-sizing: border-box;
+
+      color: black;
+      text-align: right;
+    }
+  }
+}
+
+table {
+  th {
+    background-color: rgb(228, 228, 228);
+    border: 1px solid  rgb(173, 173, 173);
+    width: 34%;
+  }
+
+  td {
+    width: 66%;
+  }
+}
+
+button {
+  padding: 6px 3px;
+  margin: 0px 3px;
+  margin-top: 12px;
+  
+  border-radius: 0px;
+  
+  // cringe easter-egg
+  width: 47.34%;
+}
+
+.btn-wrapper {
+  .save-btn {
+    @extend button;
+  }
+
+  .update-btn {
+    @extend button;
+  }
+}
+
+ul {
+  list-style: none;
+
+  li {
+    display: flex;
+    flex-direction: row;
+
+    button {
+      padding: 0px;
+      margin: 6px 0px;
+
+      display: flex;
+      justify-content: space-arround;
+      align-items: center;
+
+      width: 100%;
+
+      font-size: 18px;
+    
+      img {
+        width: 64px;
+      }
+    }
+  }
+}
