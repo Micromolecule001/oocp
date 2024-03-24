@@ -6,7 +6,12 @@ import { useState } from 'react';
 import { useFileProps } from './file/fileProps.js';
 import { useFoldersList } from './folder/foldersList.js';
 
-export const FoldersComponent = ({ folderState }) => {
+export const FoldersComponent = ({ folderState = { 
+                                                activeFolder: '',
+                                                setActiveFolder: () => {},
+                                                folders: [], setFolders: () => {}
+                                        }
+                                }) => {
     const [folderName, setFolderName] = useState('');
     const { activeFolder, setActiveFolder } = folderState;
     const { folders, setFolders } = useFoldersList();
