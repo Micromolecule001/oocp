@@ -1,7 +1,8 @@
 import './App.scss';
 import { CollectionComponent } from './components/collectionComponent';
 
-function App() {
+
+export default function App() {
   const documents = {
     1: {
       name: 'file1',
@@ -36,5 +37,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

@@ -1,17 +1,50 @@
 import React from "react";
 
-export const DocumentComponent = ({ file }) => {
+export const DocumentComponent = ({ file, fileOperations }) => {
     console.log('!!!!!!!!!File:', file); 
 
-    const handleUpdateFile = () => {
-        
+    const handleUpdateFile = (e) => {
+        const { id, value } = e.target;
+
+        console.log('id,value: ', id, value);
+
+        switch (id) {
+            case 'name':
+                file.name = value;
+                fileOperations.name.method(value);
+
+                console.log('opa', fileOperations.name.value);
+                break;
+            case 'author':
+                file.author = value;
+                fileOperations.author.method(value);
+
+                console.log('opa', fileOperations.author.value);
+                break;
+            case 'size':
+                file.fileSize = value;
+                fileOperations.size.method(value);
+
+                console.log('opa', fileOperations.size.value);
+                break;
+            case 'type':
+                file.fileType = value;
+                fileOperations.type.method(value);
+
+                console.log('opa', fileOperations.type.value);
+                break;
+            case 'path':
+                file.filePath = value;
+                fileOperations.path.method(value);
+                
+                console.log('opa', fileOperations.author.value);
+                break;
+            default:
+                console.log('Unknown input field');
+        }
     }
 
-    const pushFile = () => {
-
-    }
-
-    const handleSaveHTML = () => {  
+    const handleSaveHTML = () => {
         if (!file) return;
         
         const htmlContent = `
@@ -109,9 +142,7 @@ export const DocumentComponent = ({ file }) => {
             
             <div className="btn-wrapper">
                 <button className="save-btn" onClick={handleSaveHTML}> Save .HTML </button>
-                <button className="update-btn" onClick={pushFile}> Update Info </button>
             </div>
         </div>
     );
 }
-  
