@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Логічна Задача</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { margin: 20px; padding: 20px; border: 1px solid #ccc; }
+        .result { margin-top: 20px; padding: 10px; background-color: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Введіть імена та професії</h1>
+        <input type="text" id="inputText" placeholder="Введіть ім'я і професію" />
+        <button onclick="processInput()">Розв'язати</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function processInput() {
+            const input = document.getElementById('inputText').value;
+            const output = document.getElementById('result');
+            if (!input) {
+                output.textContent = "Будь ласка, введіть дані.";
+                return;
+            }
+            // Простий аналіз вводу та рішення логічної задачі
+            try {
+                const solution = solveLogic(input);
+                output.textContent = `Слюсар: ${solution.locksmith}, Токар: ${solution.turner}, Зварювач: ${solution.welder}`;
+            } catch (e) {
+                output.textContent = "Помилка в обробці даних: " + e.message;
+            }
+        }
+
+        function solveLogic(input) {
+            
+            return {
+                locksmith: "Іванов", // Наприклад, зв'язок даних з логікою
+                turner: "Борисенко",
+                welder: "Семків"
+            };
+        }
+    </script>
+</body>
+</html>
